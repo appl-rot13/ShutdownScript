@@ -1,31 +1,40 @@
-ShutdownScript
-==============
-クライアントを監視し、サーバをシャットダウンするスクリプト。
+[English](README.md) | [譌･譛ｬ隱枉(README.ja.md)
 
-概要
-----
-事前に設定した全てのIPアドレスに対してpingを送信し、
-1件も応答が無かった場合にshutdownコマンドを実行します。
+# Shutdown Script
 
-使い方
-------
+Script to monitor clients and shutdown the server.
 
-### IPアドレスの設定 ###
+## Overview
 
-監視対象クライアントのIPアドレスを指定します。
+If there are no responses from the specified IP addresses after sending pings, execute a shutdown command.
 
-    # Client IP Address List
-    client=(
-    	"192.168.64.3"
-    	"192.168.64.4"
-    	"192.168.64.5"
-    )
+## Usage
 
-### cronの設定 ###
+Set the IP addresses, and schedule the script using cron.
 
-本スクリプトでは一度しかシャットダウンの実行確認が行えないため、cronによって定期的に実行し、スクリプトを補完します。
+### Setting IP Address
 
-私の場合、以下設定によって1分間隔でスクリプトを実行しています。  
-crontabの書き方は、ここでは説明しませんのでより詳しいサイトを見てもらえればと。
+Set the IP addresses of the target clients to monitor.
 
-    * * * * * /[absolute path]/ShutdownScript.sh >/dev/null 2>&1
+```sh
+# Client IP Address List
+client=(
+	"192.168.64.3"
+	"192.168.64.4"
+	"192.168.64.5"
+)
+```
+
+### Setting Cron
+
+Set the script to be executed periodically using cron.
+
+Example of executing the script every 1 minute:
+
+```
+* * * * * /[absolute path]/ShutdownScript.sh >/dev/null 2>&1
+```
+
+## License
+
+This software is licensed under the [Unlicense](LICENSE).
