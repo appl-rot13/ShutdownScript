@@ -25,9 +25,9 @@ client=(
 )
 ```
 
-### Setting Cron
+### Configuring Cron
 
-Set the script to be executed periodically using cron.
+Configure the script to execute periodically using cron.
 
 Example of executing the script every 1 minute:
 
